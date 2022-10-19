@@ -9,7 +9,7 @@ services:
     volumes:
       - ./lambda_sam_golang:/app/
       - /var/run/docker.sock:/var/run/docker.sock
-    command: nodemon --signal SIGTERM --legacy-watch --ext .go,.mod,.sum,.yaml --exec "sudo sam build & sudo sam local start-api --port 8002 --host 0.0.0.0 --container-host host.docker.internal"
+    command: concurrently --kill-others "nodemon --legacy-watch --ext .go,.mod,.sum,.yaml --exec \"sudo sam build\"" "sudo sam local start-api --port 8002 --host 0.0.0.0 --container-host host.docker.internal"
   golang:
     container_name: golang_http
     build: ./golang
