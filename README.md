@@ -8,7 +8,7 @@ The following commands are to be run in the root directory of the project.
 ### `make start`
 
 Runs the app in the terminal.\
-Open docker desktop app to monitor the processes.\
+Open docker desktop app to monitor the processes.
 
 | Framework      | Language | Layer    | Access                                |
 | -------------- | -------- | -------- | ------------------------------------- |
@@ -24,12 +24,12 @@ Runs the app in the background.
 
 ### `make down`
 
-Shuts down app's cotainer while removes app's image and volume.\
+Shuts down app's cotainer while removes app's image and volume.
 
 ### `make cleanse`
 
 Cleans up docker completely including all containers, images, and volumns.\
-The container processes have to be stopped before running this command.\
+The container processes have to be stopped before running this command.
 
 ## Usage
 
