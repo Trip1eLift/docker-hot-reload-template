@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+  aws_lambda_sam_container:
+    container_name: sam_container_golang
+    build: ./lambda_sam_golang
+    ports:
+      - 8002:8002
+    working_dir: /app
+    volumes:
+      - ./lambda_sam_golang:/app/
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: nodemon --signal SIGTERM --legacy-watch --ext .go,.mod,.sum,.yaml --exec "sudo sam build & sudo sam local start-api --port 8002 --host 0.0.0.0 --container-host host.docker.internal"
+  golang:
+    container_name: golang_http
+    build: ./golang
+    ports:
+      - 8001:8001
+    working_dir: /app
+    volumes:
+      - ./golang:/app/
+    command: nodemon --exec go run main.go --signal SIGTERM --legacy-watch --ext .go,.mod,.sum
+  react_js:
+    container_name: react_js
+    build: ./reactjs
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./reactjs:/app/
+      - /app/node_modules
+    environment:
+      WATCHPACK_POLLING: "true" # required for hot-reload
+    command: [ "npm", "start" ]
+  node_express:
+    container_name: node_express
+    build: ./express
+    ports:
+      - 8000:8000
+    working_dir: /app
+    volumes:
+      - ./express:/app/
+      - /app/node_modules
+    depends_on:
+      - postgres
+    # examples of settings to connect to postgres
+    environment:
+      - DB_USER=postgres_user
+      - DB_HOST=postgres_container
+      - DB_PASS=postgres_password
+      - DB_PORT=5432
+    # override cmd
+    command: [ "nodemon", "index.js", "--legacy-watch" ]
+  postgres:
+    container_name: postgres_container
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_PASSWORD=postgres_password
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./postgres/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+volumes:
+  postgres:
+    driver: local
