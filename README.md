@@ -10,15 +10,15 @@ The following commands are to be run in the root directory of the project.
 Runs the app in the terminal.\
 Open docker desktop app to monitor the processes.
 
-| Core     | Framework       | Language | Layer    | Access                                |
-| -------- | --------------- | -------- | -------- | ------------------------------------- |
-| Node 18  | Express 4.18    | Js       | Backend  | `curl http://localhost:8000/health`   |
-| Go 1.19  | Net/Http        | Golang   | Backend  | `curl http://localhost:8001/health`   |
-| Go 1.16  | AWS Lambda SAM  | Golang   | Backend  | `curl http://localhost:8002/health`   |
-| WebPack  | React 18        | Jsx      | Frontend | Browser visit `http://localhost:3000` |
-| Postgres | Alpine Linux    | Postgres | Database | Connect to `pg://localhost:5432`      |
-| gcc      | N/A             | C        | N/A      | N/A                                   |
-| g++      | N/A             | C++      | N/A      | N/A                                   |
+| Core     | Framework       | Language   | Layer    | Access                                |
+| -------- | --------------- | ---------- | -------- | ------------------------------------- |
+| Node 18  | Express 4.18    | Js         | Backend  | `curl http://localhost:8000/health`   |
+| Go 1.19  | Net/Http        | Golang     | Backend  | `curl http://localhost:8001/health`   |
+| Go 1.16  | AWS Lambda SAM  | Golang     | Backend  | `curl http://localhost:8002/health`   |
+| WebPack  | React 18        | Jsx        | Frontend | Browser visit `http://localhost:3000` |
+| Postgres | Alpine Linux    | PostgreSQL | Database | Connect to `pg://localhost:5432`      |
+| gcc      | N/A             | C          | N/A      | N/A                                   |
+| g++      | N/A             | C++        | N/A      | N/A                                   |
 
 
 ### `make start-bg`
