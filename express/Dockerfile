@@ -1,6 +1,6 @@
 FROM node:18-alpine3.15
 
-RUN apk --no-cache add curl
+RUN apk add curl
 
 RUN npm install -g nodemon
 

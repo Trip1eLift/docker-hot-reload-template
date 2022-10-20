@@ -1,6 +1,6 @@
 FROM golang:1.19.1-alpine3.16
 
-RUN apk --no-cache add curl
+RUN apk add curl
 RUN apk add --update nodejs npm
 RUN npm install -g nodemon
 

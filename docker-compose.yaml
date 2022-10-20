@@ -1,5 +1,19 @@
 version: '3.8'
 services:
+  cpp:
+    container_name: gpp_cpp
+    build: ./cpp
+    volumes:
+      - ./cpp:/app/
+    tty: true
+    command: nodemon --legacy-watch --ext .h,.cpp --exec "g++ main.cpp -o build && ./build"
+  gcc:
+    container_name: gcc_c
+    build: ./gcc
+    volumes:
+      - ./gcc:/app/
+    tty: true
+    command: nodemon --legacy-watch --ext .h,.c --exec "gcc main.c -o build && ./build"
   aws_lambda_sam_container:
     container_name: sam_container_golang
     build: ./lambda_sam_golang
