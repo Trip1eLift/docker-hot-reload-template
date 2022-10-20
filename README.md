@@ -8,7 +8,7 @@ The following commands are to be run in the root directory of the project.
 ### `make start`
 
 Runs the app in the terminal.\
-Open docker desktop app to monitor the processes.\
+Open docker desktop app to monitor the processes.
 
 | Core     | Framework       | Language | Layer    | Access                                |
 | -------- | --------------- | -------- | -------- | ------------------------------------- |
@@ -27,12 +27,12 @@ Runs the app in the background.
 
 ### `make down`
 
-Shuts down app's cotainer while removes app's image and volume.\
+Shuts down app's cotainer while removes app's image and volume.
 
 ### `make cleanse`
 
 Cleans up docker completely including all containers, images, and volumns.\
-The container processes have to be stopped before running this command.\
+The container processes have to be stopped before running this command.
 
 ## Usage
 
@@ -106,7 +106,7 @@ services:
     command: concurrently --kill-others "nodemon --legacy-watch --ext .go,.mod,.sum,.yaml --exec \"sudo sam build\"" "sudo sam local start-api --port 8002 --host 0.0.0.0 --container-host host.docker.internal"
 ```
 
-### Gcc as an example
+### gcc of c lang as an example
 
 It's [Dockerfile](./gcc/Dockerfile) starts with Node so Nodemon can be easily installed for hot-reload. The environment only comes with `musl-dev` of std libraries. Add `RUN apk add <some package>` to Dockerfile if you need more c packages.
 
