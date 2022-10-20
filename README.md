@@ -1,5 +1,5 @@
 # ultimate-hot-reload-template
-A variety of docker image templates that's configured to hot-reload on save. This provides the optimal dev environment, but the Dockerfile settings are not meant for production.
+A variety of docker image templates that's configured to hot-reload on save. This provides the optimal dev environment, but the Dockerfiles are not meant for production.
 
 ## Launch all apps spontaneously
 
