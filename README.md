@@ -122,5 +122,5 @@ services:
     volumes:
       - ./gcc:/app/
     tty: true
-    command: nodemon --legacy-watch --ext .c --exec "gcc main.c -o build && ./build"
+    command: nodemon --legacy-watch --ext .h,.c --exec "gcc main.c -o build && ./build"
 ```
