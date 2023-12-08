@@ -132,7 +132,9 @@ Copy the `python/` folder with everything inside.
 
 docker-compose.yaml
 ```yaml
-python:
+version: '3.8'
+services:
+  python:
     container_name: python
     build: ./python
     ports:
