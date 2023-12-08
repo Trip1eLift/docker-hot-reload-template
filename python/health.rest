@@ -1,0 +1,5 @@
+GET http://localhost:8003/health
+
+###
+
+GET http://localhost:8003/

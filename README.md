@@ -15,6 +15,7 @@ Open docker desktop app to monitor the processes.
 | Node 18  | Express 4.18    | Js         | Backend  | `curl http://localhost:8000/health`   |
 | Go 1.19  | Net/Http        | Golang     | Backend  | `curl http://localhost:8001/health`   |
 | Go 1.16  | AWS Lambda SAM  | Golang     | Backend  | `curl http://localhost:8002/health`   |
+| Python 3 | Flask           | Python 3   | Backend  | `curl http://localhost:8003/health`   |
 | WebPack  | React 18        | Jsx        | Frontend | Browser visit `http://localhost:3000` |
 | Postgres | Alpine Linux    | PostgreSQL | Database | Connect to `pg://localhost:5432`      |
 | gcc      | N/A             | C          | N/A      | N/A                                   |
@@ -108,7 +109,7 @@ services:
 
 ### gcc of c lang as an example
 
-It's [Dockerfile](./gcc/Dockerfile) starts with Node so Nodemon can be easily installed for hot-reload. The environment only comes with `musl-dev` of std libraries. Add `RUN apk add <some package>` to Dockerfile if you need more c packages.
+Its [Dockerfile](./gcc/Dockerfile) starts with Node so Nodemon can be easily installed for hot-reload. The environment only comes with `musl-dev` of std libraries. Add `RUN apk add <some package>` to Dockerfile if you need more c packages.
 
 Copy the `gcc/` folder with everything inside.
 
@@ -124,3 +125,21 @@ services:
     tty: true
     command: nodemon --legacy-watch --ext .h,.c --exec "gcc main.c -o build && ./build"
 ```
+
+### Python3 with Flask as an example
+
+Copy the `python/` folder with everything inside.
+
+docker-compose.yaml
+```yaml
+python:
+    container_name: python
+    build: ./python
+    ports:
+      - 8003:8003
+    working_dir: /app
+    volumes: 
+      - ./python:/app/
+    command: nodemon --exec python main.py --signal SIGTERM --legacy-watch --ext .py
+```
+

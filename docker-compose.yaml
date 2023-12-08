@@ -64,6 +64,15 @@ services:
       - DB_PORT=5432
     # override cmd
     command: [ "nodemon", "index.js", "--legacy-watch" ]
+  python:
+    container_name: python
+    build: ./python
+    ports:
+      - 8003:8003
+    working_dir: /app
+    volumes: 
+      - ./python:/app/
+    command: nodemon --exec python main.py --signal SIGTERM --legacy-watch --ext .py
   postgres:
     container_name: postgres_container
     image: postgres:14.1-alpine
